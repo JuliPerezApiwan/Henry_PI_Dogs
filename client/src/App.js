@@ -1,9 +1,12 @@
 import './App.css';
+import { Route } from 'react-router-dom'
+import landing from './components/LandingPage/landing';
 
 function App() {
   return (
     <div className="App">
-      <h1>Henry Dogs</h1>
+      
+      <Route path='/landing' component={landing}/>
     </div>
   );
 }
