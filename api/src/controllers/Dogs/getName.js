@@ -1,28 +1,32 @@
-const { Dog } = require('../../db.js');
+const { getApiData, getDbData } = require('./saveApiData.js');
 
 const getName = async (name) => {
   if (!name) throw new Error('No tengo raza para buscar');
 
-     if(name.charAt(0) === name.charAt(0).toUpperCase()){
-      if(name.charAt(1) === name.charAt(1).toUpperCase()){
-          name = name.toLowerCase() 
-           name = (name.charAt(0)).toUpperCase() + name.slice(1)
+
+     if(name.charAt(0) === name.charAt(0).toUpperCase()){ // si el primer caracter es mayus
+      if(name.charAt(1) === name.charAt(1).toUpperCase()){ // si el segundo tambien es mayus
+          name = name.toLowerCase() // lo paso todo a minus
+           name = (name.charAt(0)).toUpperCase() + name.slice(1) // y paso a mayus la primera letra
        }
      }   
   
-     if(name.charAt(0) === name.charAt(0).toLowerCase()){
-      name = (name.charAt(0)).toUpperCase() + name.slice(1)
+     if(name.charAt(0) === name.charAt(0).toLowerCase()){ // si la primera es minuscula (gralmente lo que sigue es minus)
+      name = (name.charAt(0)).toUpperCase() + name.slice(1) // paso a mayus la primera letra
      }
     //console.log(name)
 
-   const result = await Dog.findOne({
-    where: {
-      name: name
-    },
-  });
-
-  if (!result) throw new Error('No tengo la raza que ingresaste');
-  else return result;
+   const resultApi = await getApiData();
+   const resultDb = await getDbData();
+   const dogApi = resultApi.filter((e) => e.name === name)
+   //console.log(dogApi)
+   if(dogApi.length) return dogApi;
+   else {
+    console.log(name)
+    const dogDb = resultDb.find((e) => e.name === name)
+    if(!dogDb) return ('No tengo la raza que ingresaste')
+    else return dogDb
+   }
 };
 
 module.exports = {

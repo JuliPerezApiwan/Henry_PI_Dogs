@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { Dog } = require('../../db');
+const { Dog, Temperament } = require('../../db');
 const { MY_API_KEY } = process.env
 
 const getApiData = async () => {
@@ -18,6 +18,7 @@ const getApiData = async () => {
             height: res.height.metric,
             weight: res.weight.metric,
             life_span: res.life_span,
+            temperament:res.temperament
             
         }
     }))
@@ -34,24 +35,38 @@ const getApiData = async () => {
    
 };
 
-const saveApiData = async () => {
-    try {
-        
-    const allDogs = await getApiData();
-    
-    await Dog.bulkCreate(allDogs);
-    //console.log(allDogs)
-    return allDogs
-    } catch (error) {
-    return { error: error.message };
-    }
+const getDbData = async () => {
+    const res = Dog.findAll({
+        include: {
+            model: Temperament,
+            attributes: ['name'], //atributos que quiero traer del modelo Temperament, el id lo trae automatico
+            through: {
+                attributes: [],//traer mediante los atributos del modelo
+            },
+        }
+    })
+    return res
 }
+
+// const saveApiData = async () => {
+//     try {
+        
+//     const allDogs = await getApiData();
+    
+//     await Dog.bulkCreate(allDogs);
+//     //console.log(allDogs)
+//     return allDogs
+//     } catch (error) {
+//     return { error: error.message };
+//     }
+// }
    
+
 
 
 module.exports = {
     getApiData,
-    saveApiData,
+    getDbData,
 }
 
 

@@ -19,14 +19,15 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
-const { saveApiData } = require('./src/controllers/Dogs/saveApiData')
+const { getApiData, getDbData } = require('./src/controllers/Dogs/saveApiData')
 const { saveApiDataTemperaments } = require('./src/controllers/Temperaments/saveApiDataTemperament')
 
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then( async () => {
+conn.sync({ force: false }).then( async () => {
   console.log('Db Connected')
-  await saveApiData();
+  await getApiData();
+  await getDbData();
   await saveApiDataTemperaments();
   server.listen(3001, () => {
   console.log('%s listening at 3001'); // eslint-disable-line no-console

@@ -1,0 +1,13 @@
+.home {
+    background-image: url("https://static.vecteezy.com/system/resources/previews/006/431/810/non_2x/seamless-dog-pattern-with-paw-prints-cat-foots-texture-pattern-with-doggy-pawprints-dog-texture-hand-drawn-illustration-in-doodle-style-on-white-background-vector.jpg");
+    height: 103vh;
+	background-color: black;
+    background-size:50%;
+	background-position: center;  
+	background-repeat: repeat;  
+    margin-top: -40px;
+}
+
+.home h1{
+padding-top: 60px;
+}
