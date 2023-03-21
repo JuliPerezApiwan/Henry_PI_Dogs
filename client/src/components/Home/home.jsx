@@ -4,7 +4,9 @@ import { useEffect, useState } from 'react';
 import {
   getAllDogs,
   orderDogs,
-  orderbyWeight
+  orderbyWeight, 
+  filterbyTemperaments,
+  getAllTemperaments
 } from '../../redux/actions'
 import DogCard from '../DogCard/dogCard';
 import Pagination from '../Pagination/pagination';
@@ -12,6 +14,7 @@ import Pagination from '../Pagination/pagination';
 export const Home = () => {
 const dispatch = useDispatch();
 const allDogs = useSelector((state) => state.allDogs)
+const allTemperaments = useSelector((state) => state.allTemperaments)
 //console.log(allDogs)
 const [order, setOrder] = useState();
 
@@ -26,14 +29,21 @@ const handlerOrder = (event) => {
     setOrder(event.target.value);
   };
 
-  const handlerOrderbyWeight = (event) => {
+const handlerOrderbyWeight = (event) => {
     event.preventDefault();
     dispatch(orderbyWeight(event.target.value));
     setOrder(event.target.value);
   };
 
+const handlerFilterbyTemperament = (event) => {
+    event.preventDefault();
+    dispatch(filterbyTemperaments(event.target.value));
+    setOrder(event.target.value);
+  };
+
 useEffect(() => {
-    dispatch(getAllDogs())
+    dispatch(getAllDogs());
+    dispatch(getAllTemperaments())
 }, [dispatch])
 
 
@@ -52,6 +62,18 @@ useEffect(() => {
         <option value="All">Order By Weight</option>
         <option value="higher-weight">Higher Weigh</option>
         <option value="lower-weight">Lower Weigh</option>
+        </select>
+
+        <select onChange={handlerFilterbyTemperament} className={style.filters}>
+        <option value="Filter-by-Temperaments">Filter By Temperaments</option>
+        <option value="All" key="All">
+          All
+        </option>
+        {allTemperaments.map((e) => (
+          <option value={e.name} key={e.name}>
+            {e.name}
+          </option>
+        ))}
       </select>
 
 

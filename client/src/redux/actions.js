@@ -1,4 +1,4 @@
-import { GET_ALL_DOGS, ORDER, ORDER_BYWEIGHT } from './actions-types'
+import { GET_ALL_DOGS, ORDER, ORDER_BYWEIGHT, FILTER_BYTEMPERAMENTS, GET_ALL_TEMPERAMENTS } from './actions-types'
 import axios from 'axios'
 
 export const getAllDogs = () => {
@@ -15,10 +15,26 @@ export const getAllDogs = () => {
     }
 }
 
+export const getAllTemperaments = () => {
+    return async (dispacht) => {      
+        const response = await axios.get('http://localhost:3001/temperaments')
+        const data = response.data
+
+        return dispacht({
+            type: GET_ALL_TEMPERAMENTS,
+            payload: data
+        })
+    }
+}
+
 export const orderDogs = (name) => {
     return {type: ORDER, payload: name}
 }
 
 export const orderbyWeight = (weight) => {
     return { type: ORDER_BYWEIGHT, payload: weight };
+};
+
+export const filterbyTemperaments = (temperament) => {
+    return { type: FILTER_BYTEMPERAMENTS, payload: temperament };
   };
