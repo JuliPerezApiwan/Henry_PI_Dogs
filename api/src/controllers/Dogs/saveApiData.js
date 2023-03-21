@@ -11,9 +11,10 @@ const getApiData = async () => {
     
 
     dogs = (await Promise.all(dogs)).map((c) => c.data.map((res) => {
+        //if(res.image.includes('http') ? c.image.url :('no tiene img'))
         return {
             id: res.id,
-            image: res.image.url,
+            image: res.image,
             name: res.name,
             height: res.height.metric,
             weight: res.weight.metric,
@@ -40,10 +41,8 @@ const getDbData = async () => {
         include: {
             model: Temperament,
             attributes: ['name'], //atributos que quiero traer del modelo Temperament, el id lo trae automatico
-            through: {
-                attributes: [],//traer mediante los atributos del modelo
-            },
         }
+        
     })
     return res
 }

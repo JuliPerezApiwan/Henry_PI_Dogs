@@ -1,17 +1,20 @@
 import { Link } from "react-router-dom";
+import style from '../DogCard/dogCard.module.css'
 
 
-const dogCard = ({id, name, image, temperaments, weight }) => {
+const DogCard = ({id, name, image, temperament, weight, Temperaments }) => {
+    //console.log(Temperaments)
+   
     return(
-        <div>
+        <div className={style.dogCard}>
             <img src={image} alt={name} />
 
-            <Link to={`/detail/${id}`} ><h2>{name}</h2></Link>
+            <Link to={`/detail/${id}`} className={style.link_dogCard}  ><h2>{name}</h2></Link>
+            <h4>Weight</h4> <p>{weight} metrical </p>
+            <h4>Temperaments</h4> <p>{temperament?temperament:('solucionar array Temp de la db')}</p>
             
-            <h3>{temperaments}</h3>
-            <h3>{weight}</h3>
         </div>
     )
 }
 
-export default dogCard;
+export default DogCard;

@@ -6,8 +6,18 @@
 	background-position: center;  
 	background-repeat: repeat;  
     margin-top: -40px;
+    background-attachment: fixed;
+    overflow: scroll
 }
 
 .home h1{
 padding-top: 60px;
+}
+.cards {
+    padding: 3rem;
+    margin-top: -20px;
+    gap: 1rem;
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    
 }
