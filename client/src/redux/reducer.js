@@ -1,7 +1,8 @@
-import { GET_ALL_DOGS, ORDER, ORDER_BYWEIGHT, FILTER_BYTEMPERAMENTS, GET_ALL_TEMPERAMENTS } from './actions-types'
+import { GET_ALL_DOGS, ORDER, ORDER_BYWEIGHT, FILTER_BYTEMPERAMENTS, GET_ALL_TEMPERAMENTS, FILTER_FROM_DOGS} from './actions-types'
 
 const initialState = {
     allDogs: [],
+    dogs: [],
     orderDogs: [],
     allTemperaments: [],
 }
@@ -12,6 +13,7 @@ const reducer = (state = initialState, action) => {
             return { 
             ...state,
             allDogs: action.payload,
+            dogs:action.payload
         }
         case GET_ALL_TEMPERAMENTS:
             return { 
@@ -83,16 +85,26 @@ const reducer = (state = initialState, action) => {
             };
         
             case FILTER_BYTEMPERAMENTS:
-                const allTemperaments = state.allDogs
+                const allTemperaments = state.dogs
                 const temperamentFilter =
-                  action.payload === 'All'
+                  action.payload === 'All' || action.payload === 'Filter-by-Temperaments'
                     ? allTemperaments
                     : allTemperaments.filter((i) => i.temperament === action.payload);
                 return {
                   ...state,
-                  allTemperaments: temperamentFilter,
+                  allDogs: temperamentFilter,
+                  
                 };
-
+            case FILTER_FROM_DOGS:
+                const filter = action.payload === 'All' 
+                ? state.dogs
+                : (action.payload === 'db') ? 
+            state.dogs.filter((i) => (i.createdAt)) 
+            : state.dogs.filter((i) => (!(i.createdAt)))
+                return {
+                    ...state,
+                    allDogs: filter, 
+                    };
         default:
         return { 
             ...state 

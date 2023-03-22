@@ -21,3 +21,20 @@ padding-top: 60px;
     grid-template-columns: repeat(4, 1fr);
     
 }
+
+.filters {
+    width:180px;
+    height: 30px;
+    margin: 10px 10px;
+    border: 25px;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    background-color: black;
+    cursor: pointer;
+    box-shadow: -1px 3px 3px 2px rgba(0,0,0,0.4);
+}
+
+.filters option:hover{
+    cursor: pointer;
+}

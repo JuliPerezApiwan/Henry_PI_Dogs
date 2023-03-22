@@ -1,4 +1,4 @@
-import { GET_ALL_DOGS, ORDER, ORDER_BYWEIGHT, FILTER_BYTEMPERAMENTS, GET_ALL_TEMPERAMENTS } from './actions-types'
+import { GET_ALL_DOGS, ORDER, ORDER_BYWEIGHT, FILTER_BYTEMPERAMENTS, GET_ALL_TEMPERAMENTS, FILTER_FROM_DOGS } from './actions-types'
 import axios from 'axios'
 
 export const getAllDogs = () => {
@@ -38,3 +38,8 @@ export const orderbyWeight = (weight) => {
 export const filterbyTemperaments = (temperament) => {
     return { type: FILTER_BYTEMPERAMENTS, payload: temperament };
   };
+
+  export const filterfromDogs = (payload) => {
+    return { type: FILTER_FROM_DOGS, payload };
+  };
+

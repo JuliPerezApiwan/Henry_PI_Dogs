@@ -30,7 +30,7 @@ function Pagination({ currentPage, setCurrentPage, max }) {
         Prev
       </button>
       <input onChange={(e) => onChange(e)} name="page" value={input} /> <p> of {max} </p>
-      <button onClick={nextPage} disabled={currentPage >= 22}>
+      <button onClick={nextPage} disabled={currentPage >= max}>
         Next
       </button>
     </div>

@@ -6,7 +6,8 @@ import {
   orderDogs,
   orderbyWeight, 
   filterbyTemperaments,
-  getAllTemperaments
+  getAllTemperaments,
+  filterfromDogs
 } from '../../redux/actions'
 import DogCard from '../DogCard/dogCard';
 import Pagination from '../Pagination/pagination';
@@ -41,6 +42,12 @@ const handlerFilterbyTemperament = (event) => {
     setOrder(event.target.value);
   };
 
+  const handlerFilterfromDogs = (event) => {
+    event.preventDefault();
+    dispatch(filterfromDogs(event.target.value));
+    setOrder(event.target.value);
+  };
+
 useEffect(() => {
     dispatch(getAllDogs());
     dispatch(getAllTemperaments())
@@ -63,9 +70,9 @@ useEffect(() => {
         <option value="higher-weight">Higher Weigh</option>
         <option value="lower-weight">Lower Weigh</option>
         </select>
-
+        
         <select onChange={handlerFilterbyTemperament} className={style.filters}>
-        <option value="Filter-by-Temperaments">Filter By Temperaments</option>
+        <option value="Filter-by-Temperaments" key="Filter-by-Temperaments">Filter By Temperaments</option>
         <option value="All" key="All">
           All
         </option>
@@ -75,6 +82,12 @@ useEffect(() => {
           </option>
         ))}
       </select>
+       
+      <select onChange={handlerFilterfromDogs} className={style.filters}>
+        <option value="All">Filter From Dog</option>
+        <option value="db">Formulario</option>
+        <option value="api">Api</option>
+        </select>
 
 
         <div className={style.cards}> 
