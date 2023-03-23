@@ -11,6 +11,7 @@ import {
 } from '../../redux/actions'
 import DogCard from '../DogCard/dogCard';
 import Pagination from '../Pagination/pagination';
+import NavBar from '../NavBar/navBar'
 
 export const Home = () => {
 const dispatch = useDispatch();
@@ -56,7 +57,7 @@ useEffect(() => {
 
    return (
     <div className={style.home}>
-        <h1>HOME</h1>
+        <NavBar/>
         <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} max={max} />
 
         <select onChange={handlerOrder} className={style.filters}>
@@ -92,12 +93,14 @@ useEffect(() => {
 
         <div className={style.cards}> 
         {allDogs.slice(
+            //console.log(allDogs)
               (currentPage - 1) * dogsPerPage,
               (currentPage - 1) * dogsPerPage + dogsPerPage
             ).map((c) => {
                 return (
                 <DogCard
                 key={c.id}
+                id={c.id}
                 name={c.name}
                 image={c.image.url}
                 weight={c.weight}

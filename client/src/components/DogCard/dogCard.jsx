@@ -9,9 +9,12 @@ const DogCard = ({id, name, image, temperament, weight, Temperaments }) => {
         <div className={style.dogCard}>
             <img src={image} alt={name} />
 
-            <Link to={`/detail/${id}`} className={style.link_dogCard}  ><h2>{name}</h2></Link>
-            <h4>Weight</h4> <p>{weight} metrical </p>
-            <h4>Temperaments</h4> <p>{temperament?temperament:('solucionar array Temp de la db')}</p>
+            <Link to={`/dogs/${id}`} className={style.link_dogCard}  >
+            <h2>{name}</h2></Link>
+            <h4>Weight</h4> 
+            <p>{weight} metrical </p>
+            <h4>Temperaments</h4> 
+            <p>{temperament?temperament:('solucionar array Temp de la db')}</p>
             
         </div>
     )

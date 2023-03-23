@@ -10,12 +10,12 @@ const getIdDogs = async(id) => {
         
         if(result.length) {
         console.log(result)
-        return result
+        return result[0]
         } else {
             const allDogsDb = await getDbData()
-            const dog = allDogsDb.find((e) => e.id === id)
+            const result = allDogsDb.find((e) => e.id === id)
             //console.log(dog)
-        return dog
+        return result
         }
 
 

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import style from '../LandingPage/landing.module.css'
-const landing = () => {
+
+const Landing = () => {
    return (
     <div className={style.landing}>
         <div className={style.data}>
@@ -17,4 +18,4 @@ const landing = () => {
    )
 }
 
-export default landing;
+export default Landing;

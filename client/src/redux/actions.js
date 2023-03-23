@@ -1,4 +1,4 @@
-import { GET_ALL_DOGS, ORDER, ORDER_BYWEIGHT, FILTER_BYTEMPERAMENTS, GET_ALL_TEMPERAMENTS, FILTER_FROM_DOGS } from './actions-types'
+import { GET_ALL_DOGS, ORDER, ORDER_BYWEIGHT, FILTER_BYTEMPERAMENTS, GET_ALL_TEMPERAMENTS, FILTER_FROM_DOGS, GET_DOGS_NAME, GET_DOG_DETAIL } from './actions-types'
 import axios from 'axios'
 
 export const getAllDogs = () => {
@@ -43,3 +43,29 @@ export const filterbyTemperaments = (temperament) => {
     return { type: FILTER_FROM_DOGS, payload };
   };
 
+  export const getDogsName = (name) => {
+    return async (dispatch) => {
+      const response = await axios.get(`http://localhost:3001/dogs/name?name=${name}`);
+      const data = response.data;
+      if(data.length === 0) return alert("No se encontró la raza")
+      else {
+  
+      return await dispatch({
+        type: GET_DOGS_NAME,
+        payload: data,
+      });
+    }
+    };
+  };
+
+  export const getDogDetail = (id) => {
+    return async (dispatch) => {
+      const response = await axios.get(`http://localhost:3001/dogs/${[id]}`);
+      const data = response.data;
+  
+      return dispatch({
+        type: GET_DOG_DETAIL,
+        payload: data,
+      });
+    };
+  };
