@@ -14,7 +14,7 @@ const getApiData = async () => {
         //if(res.image.includes('http') ? c.image.url :('no tiene img'))
         return {
             id: res.id,
-            image: res.image,
+            image: res.image.url,
             name: res.name,
             height: res.height.metric,
             weight: res.weight.metric,

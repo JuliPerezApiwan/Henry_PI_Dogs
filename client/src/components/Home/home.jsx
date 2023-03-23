@@ -102,7 +102,7 @@ useEffect(() => {
                 key={c.id}
                 id={c.id}
                 name={c.name}
-                image={c.image.url}
+                image={c.image}
                 weight={c.weight}
                 temperament={c.temperament}
                 />
