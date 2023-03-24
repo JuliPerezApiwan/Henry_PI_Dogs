@@ -9,6 +9,7 @@ const NavBar = () => {
       <Link to="/form">
         <button className={style.btn_nvb}>Activities Form</button>
       </Link>
+      <Link to="/home" className={style.btn_detail}>BACK</Link>
       <SearchBar/>
     </div>
   );

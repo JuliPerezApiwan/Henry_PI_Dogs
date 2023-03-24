@@ -18,14 +18,14 @@ const getName = async (name) => {
 
    const resultApi = await getApiData();
    const resultDb = await getDbData();
-   const dogApi = resultApi.filter((e) => e.name === name)
+   const data = resultApi.concat(resultDb)
+   console.log(data)
+   const dog = data.filter((e) => e.name == name)
    //console.log(dogApi)
-   if(dogApi.length) return dogApi;
+   if(dog.length) return dog;
    else {
-    console.log(name)
-    const dogDb = resultDb.find((e) => e.name === name)
-    if(!dogDb) return ('No tengo la raza que ingresaste')
-    else return dogDb
+    return ('No tengo la raza que ingresaste')
+    
    }
 };
 

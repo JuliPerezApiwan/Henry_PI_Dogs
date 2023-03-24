@@ -11,7 +11,7 @@ import NavBar from '../NavBar/navBar';
 const DogDetail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { name, image, height, weight, life_span, temperament } = useSelector((state) => state.dogDetail);
+  const { name, image, height, weight, life_span, temperament, Temperaments} = useSelector((state) => state.dogDetail);
   
  
  
@@ -20,6 +20,7 @@ const DogDetail = () => {
     dispatch(getDogDetail(id));
     //return () => dispatch(cleanCountryDetail()) // que cuando se demonte me limpie countryDetail
   }, []);
+
 
         return (
            
@@ -34,7 +35,7 @@ const DogDetail = () => {
             <h3>Height:</h3> <p>{height}</p>
             <h3>Weight:</h3> <p>{weight}</p>
             <h3>Life Span:</h3> <p>{life_span}</p>
-            <h3>Temperaments:</h3> <p>{temperament}</p>
+            <h3>Temperaments:</h3> <p>{temperament !== undefined?temperament: Temperaments.map((e) => e.name)}</p>
           </div>
         </div>
       </div>

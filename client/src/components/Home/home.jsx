@@ -77,7 +77,7 @@ useEffect(() => {
         <option value="All" key="All">
           All
         </option>
-        {allTemperaments.map((e) => (
+        {allTemperaments.map((e) =>  (
           <option value={e.name} key={e.name}>
             {e.name}
           </option>
@@ -104,7 +104,7 @@ useEffect(() => {
                 name={c.name}
                 image={c.image}
                 weight={c.weight}
-                temperament={c.temperament}
+                temperament={c.temperament? c.temperament:c.Temperaments.map((e) => e.name)}
                 />
                 )
             })

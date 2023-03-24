@@ -1,5 +1,5 @@
 
-import { GET_ALL_DOGS, ORDER, ORDER_BYWEIGHT, FILTER_BYTEMPERAMENTS, GET_ALL_TEMPERAMENTS, FILTER_FROM_DOGS, GET_DOGS_NAME, GET_DOG_DETAIL} from './actions-types'
+import { GET_ALL_DOGS, ORDER, ORDER_BYWEIGHT, FILTER_BYTEMPERAMENTS, GET_ALL_TEMPERAMENTS, FILTER_FROM_DOGS, GET_DOGS_NAME, GET_DOG_DETAIL, ADD_DOG} from './actions-types'
 
 const initialState = {
     allDogs: [],
@@ -116,8 +116,15 @@ const reducer = (state = initialState, action) => {
               return {
                 ...state,
                 dogDetail: action.payload,
-                
                 };
+        case ADD_DOG:
+                  
+                  const newDog = state.dogs.slice();
+                  newDog.push(action.payload);
+                  return {
+                    ...state,
+                    allDogs: newDog, //[...state.activities, action.payload]
+                  };
                 
         default:
         return { 

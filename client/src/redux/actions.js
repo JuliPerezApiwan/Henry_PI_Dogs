@@ -1,4 +1,4 @@
-import { GET_ALL_DOGS, ORDER, ORDER_BYWEIGHT, FILTER_BYTEMPERAMENTS, GET_ALL_TEMPERAMENTS, FILTER_FROM_DOGS, GET_DOGS_NAME, GET_DOG_DETAIL } from './actions-types'
+import { GET_ALL_DOGS, ORDER, ORDER_BYWEIGHT, FILTER_BYTEMPERAMENTS, GET_ALL_TEMPERAMENTS, FILTER_FROM_DOGS, GET_DOGS_NAME, GET_DOG_DETAIL, ADD_DOG } from './actions-types'
 import axios from 'axios'
 
 export const getAllDogs = () => {
@@ -19,10 +19,14 @@ export const getAllTemperaments = () => {
     return async (dispacht) => {      
         const response = await axios.get('http://localhost:3001/temperaments')
         const data = response.data
+        const temp = data.filter((e) => e.name !== null)
+        const temp2 = new Set(temp);
+        const temp3 = [...temp2]
+        
 
         return dispacht({
             type: GET_ALL_TEMPERAMENTS,
-            payload: data
+            payload: temp3
         })
     }
 }
@@ -66,6 +70,18 @@ export const filterbyTemperaments = (temperament) => {
       return dispatch({
         type: GET_DOG_DETAIL,
         payload: data,
+      });
+    };
+  };
+
+  export const addDog = (payload) => {
+    return async (dispatch) => {
+      const response = await axios.post('http://localhost:3001/dogs');
+      const data = response.data;
+  
+      return dispatch({
+        type: ADD_DOG,
+        payload: data
       });
     };
   };
