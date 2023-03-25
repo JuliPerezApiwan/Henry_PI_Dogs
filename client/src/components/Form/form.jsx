@@ -4,12 +4,13 @@ import { useState, useEffect } from 'react';
 import { addDog, getAllDogs, getAllTemperaments } from '../../redux/actions';
 import style from '../Form/form.module.css';
 import { Link } from 'react-router-dom';
-//import validation from './validation';
+import validate from './validation';
+
+
 const Form = () => {
     const allDogs = useSelector((state) => state.allDogs);
-    const [dogs, setdogs ] = useState(allDogs)
     const allTemperaments = useSelector((state) => state.allTemperaments);
-  const dispatch = useDispatch('');
+    const dispatch = useDispatch('');
     const [form, setForm] = useState({
         image: '',
         name:'',
@@ -19,13 +20,14 @@ const Form = () => {
         temperamentID: '',
     });
 
-    // const [errors, setErrors] = useState({
-    //     name: '',
-    //     height: '',
-    //     weight: '',
-    //     life_span:'',
-    //     temperaments:''
-    // })
+    const [errors, setErrors] = useState({
+        image: '',
+        name:'',
+        height:'',
+        weight: '' ,
+        life_span: '',
+        temperamentID: '',
+    })
    //max height
  //min
  //max weight
@@ -36,26 +38,38 @@ const Form = () => {
   
   
     const handleChange = (event) => {
-      setForm({
+       setForm ({
         ...form,
         [event.target.name]: event.target.value,
       });
-    //   setErrors(validation({
-    //     ...form,
-    //     [event.target.name]: event.target.value
-    // }))
+      setErrors(validate({
+        ...form,
+         [event.target.name]: event.target.value
+     }))
     };
   
     const handleSubmit = (event) => {
       event.preventDefault();
-      dispatch(addDog(form));
-      //alert('Raza creada');
+     dispatch(addDog(form));
+     alert('Raza creada')
+     if (form.name.length > 0 && form.height.length > 0 && form.weight.length > 0 && form.life_span.length > 0) 
+     setForm({
+        image: '',
+        name:'',
+        height:'',
+        weight: '' ,
+        life_span: '',
+        temperamentID: '',
+     })
+     else {
+        alert(errors.name || errors.height|| errors.weight || errors.life_span)
+     }
     };
   
     const handleSelectTemperaments = (e) => {
       setForm({
         ...form,
-        temperamentID : form.temperamentID.concat(e.target.value),
+        temperamentID : [...form.temperamentID,e.target.value],
       });
     };
   
@@ -63,7 +77,7 @@ const Form = () => {
     useEffect(() => {
       dispatch(getAllDogs());
       dispatch(getAllTemperaments());
-    }, []);
+    }, [dispatch]);
   
     return (
     
@@ -74,21 +88,22 @@ const Form = () => {
           </Link>
           <div className={style.container}>
             <h2>Add Dogs Form</h2>
-            <label>Image:</label>
-            <input type="text" autoComplete="off" value={form.image} name="image" placeholder="Image URL..." onChange={handleChange}/>
+            <label>Image <input type="text" autoComplete="off" value={form.image} name="image" placeholder="Image URL..." onChange={handleChange}/>
+            </label>
+           
+
             <label>
-              Name:
+              Name
               <input
                 type="text"
                 name="name"
                 value={form.name}
                 onChange={handleChange}
-              ></input> 
-             
+              ></input>
             </label>
   
             <label>
-            Height:
+            Height
               <input
                 type="text"
                 name="height"
@@ -99,7 +114,7 @@ const Form = () => {
             </label>
   
             <label>
-            Weight:
+            Weight
             <input
                 type="text"
                 name="weight"
@@ -107,29 +122,27 @@ const Form = () => {
                 onChange={handleChange}
                 placeholder='Min weight - Max weight'
               ></input>
-              <p>metric</p>
             </label>
   
             <label>
-            Life Span:
+            Life Span
               <input
                 type="text"
                 name="life_span"
                 value={form.life_span}
                 onChange={handleChange}
               />
-              <p>years</p>
             </label>
   
             <label>
-            Temperaments:
+            Temperaments
             <select
               className="select"
               name="temperaments"
               onChange={handleSelectTemperaments}
               value={form.id}
             >
-              <option>Temperaments</option>
+              <option>Select</option>
               {allTemperaments?.map((e) => (
                 <option key={e.name} value={e.name}>
                   {e.name}
@@ -152,9 +165,6 @@ const Form = () => {
     };
   };
   
-  //const filterCountries = countries.filter((e) => e.name === [activities].ubication)
-  //? filterCountries.activities.push([activities])
-  // : new Error ('el pais no existe')
   
   export default connect(null, dispatchDog)(Form);
   

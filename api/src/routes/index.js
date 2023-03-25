@@ -57,7 +57,7 @@ router.get('/temperaments', async (req, res) => {
     }
   });
 
-  router.post('/dogs', async (req, res) => {
+  router.post('/dog', async (req, res) => {
     const { image, name, height, weight, life_span, temperamentID } = req.body;
     try {
       

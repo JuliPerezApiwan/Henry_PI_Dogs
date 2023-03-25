@@ -1,44 +1,51 @@
 .div {
-    background-image: url('https://p4.wallpaperbetter.com/wallpaper/766/308/889/spot-light-faded-wallpaper-preview.jpg');
-    background-size:400%;
+    background-image: url("https://media.istockphoto.com/id/1006940504/es/vector/garabato-perros-colores-de-fondo.jpg?s=170667a&w=0&k=20&c=HiUwnhc_FuaDU2BbShtPWxwJ2jx3BGG3wQwCkLgipu8=");
+    height: 100vh;
+	background-color: black;
+    background-size:20%;
 	background-position: center;  
+	background-repeat: repeat;  
+
 	
 }
 
 form {
-	padding:8px;
+	padding:5px;
 	border-radius:10px;
     display: inline-block;
     box-shadow: 0 0 0.2rem rgb(12 12 12), 0 0 0.2rem rgb(16 15 15 / 86%), 0 0 2rem rgb(5 10 6);
     margin-top: 40px;
     margin-bottom: 40px;
-    padding-left: 10px;
-    margin-left: -15px;
-    background-color: rgb(126, 163, 199);   
+  
+    background-color: rgba(179, 138, 76, 0.887) 
 }
-
+.container{
+    width: 550px;
+}
 .container input {
     background-color: #4CAF50;
     border-radius: 4px;
     cursor:pointer;
-    width:300px;
+    width:68%;
     height: 20px;
-	padding:4px 35px;
-    padding-right: 15px;
+	padding:3px 3px;
 	border-radius:3px;
 	background-color:#f6f6f6;
     display: flex;
-    margin: 20px;
+    margin: 10px;
+    margin-left: 87px;
+    margin-right: 150px;
 }
 
 .container label {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-left: -10px;
    
     
 }
 
 .btn {
-    margin-left: 0px;
+    margin-left: 200px;
     margin-top: 8px;
     margin-bottom: 8px;
     background-color: black;
@@ -50,6 +57,7 @@ form {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     font-size: 12px;
     cursor:pointer;
+    width: 100px;
 }
 .btn:hover {
     background-color: white;
@@ -58,14 +66,17 @@ form {
   }
   
   .container select {
-    width: 90%;
+    width: 70%;
     height: 30px;
-    margin: 0.5rem;
+    margin-left: 87px;
+    margin-right: 150px;
+    display: flex;
+    margin-top: 10px;
   }
   
 .container h2{
     color: black;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family:monospace;
     font-size: 30px;
 }
 
@@ -75,11 +86,11 @@ form {
     border-radius: 10px;
     border: none;
     color: white;
-    padding: 10px 20px;
+    padding: 10px 10px;
     text-align: center;
     text-decoration: none;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-    font-size: 12px;
+    font-size: 15px;
     cursor:pointer;
 }
 

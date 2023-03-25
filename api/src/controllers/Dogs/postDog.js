@@ -12,9 +12,9 @@ const postDog = async (image, name, height, weight, life_span, temperamentID) =>
     
     
 
-const id = allDogs.length 
+const id = allDogs.length +1
 
- if (!image || !name || !height || !weight || !life_span || !temperamentID) throw new Error('Me falta informacion');
+ if (!name || !height || !weight || !life_span || !temperamentID) throw new Error('Me falta informacion');
 
   const validate =  allDogs.find((e) => e.name === name)
 
@@ -25,7 +25,7 @@ const id = allDogs.length
   if (validate) throw new Error ('La raza ya existe');
   if(!validate) {
     const newRaza = await Dog.create({
-        id: id + 1,
+        id: id,
         image: image ? image : "https://www.kindpng.com/picc/m/139-1396987_clip-art-cats-and-dogs-dibujos-de-perros.png",
         name: (name.charAt(0)).toUpperCase() + name.slice(1) ,
         height,
@@ -40,7 +40,7 @@ const id = allDogs.length
         }
     })
     
-    const res = await temp.addDogs(newRaza)
+    await newRaza.addTemperament(temp)
     
 return ("Raza creada correctamente");
   }
