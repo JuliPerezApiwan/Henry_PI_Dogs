@@ -86,7 +86,7 @@ export const filterbyTemperaments = (temperament) => {
       
       return await dispatch({
         type: ADD_DOG,
-        payload
+        payload:data
       });
     };
     

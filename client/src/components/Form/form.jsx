@@ -8,7 +8,7 @@ import validate from './validation';
 
 
 const Form = () => {
-    const allDogs = useSelector((state) => state.allDogs);
+    //const allDogs = useSelector((state) => state.allDogs);
     const allTemperaments = useSelector((state) => state.allTemperaments);
     const dispatch = useDispatch('');
     const [form, setForm] = useState({
@@ -99,6 +99,7 @@ const Form = () => {
                 name="name"
                 value={form.name}
                 onChange={handleChange}
+                placeholder='Name'
               ></input>
             </label>
   
@@ -131,6 +132,7 @@ const Form = () => {
                 name="life_span"
                 value={form.life_span}
                 onChange={handleChange}
+                placeholder='Life Span'
               />
             </label>
   
