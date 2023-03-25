@@ -35,7 +35,7 @@ const DogDetail = () => {
             <h3>Height:</h3> <p>{height}</p>
             <h3>Weight:</h3> <p>{weight}</p>
             <h3>Life Span:</h3> <p>{life_span}</p>
-            <h3>Temperaments:</h3> <p>{temperament !== undefined?temperament: Temperaments.map((e) => e.name)}</p>
+            <h3>Temperaments:</h3> <p>{temperament !== undefined?temperament: 'Temperaments.map((e) => e.name)'}</p>
           </div>
         </div>
       </div>

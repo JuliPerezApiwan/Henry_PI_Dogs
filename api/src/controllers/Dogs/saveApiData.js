@@ -12,6 +12,9 @@ const getApiData = async () => {
 
     dogs = (await Promise.all(dogs)).map((c) => c.data.map((res) => {
         //if(res.image.includes('http') ? c.image.url :('no tiene img'))
+//        
+
+
         return {
             id: res.id,
             image: res.image.url,
@@ -28,6 +31,29 @@ const getApiData = async () => {
     dogs.map((c) => {
         allDogs = allDogs.concat(c)
     });
+    
+
+    
+    // allDogs.map((e) => {
+    //     let heightArray = [];
+    //             if (e.height) {
+    //                 heightArray = e.height.split(" - ");
+    //             }
+    //             heightArray.forEach((c) => {heightArray = c})
+            
+    //     let weightArray = [];
+    //             if (e.weight) {
+    //                 weightArray = e.weight.split(" - ");
+    //                 weightArray.forEach((c) => {weightArray = c})
+    //             }
+                
+
+    //     console.log(Math.max(heightArray))
+    // })
+   
+
+//console.log(heightArray)
+
      //console.log(allDogs)
     return allDogs;
     } catch (error) {

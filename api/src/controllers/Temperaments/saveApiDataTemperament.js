@@ -15,12 +15,13 @@ const getApiDataTemperaments = async () => {
             name: res.temperament
         }
     }))
-   
+
     let allTemperaments = [];
+    
     temperamets.map((c) => {
         allTemperaments = allTemperaments.concat(c)
     });
-    //console.log(allTemperaments)
+
     return allTemperaments;
     } catch (error) {
     return { error: error.message };
@@ -33,6 +34,7 @@ const saveApiDataTemperaments = async () => {
         
     const allTemperaments = await getApiDataTemperaments();
     //console.log(allTemperaments)
+    
     await Temperament.bulkCreate(allTemperaments);
     
     return allTemperaments

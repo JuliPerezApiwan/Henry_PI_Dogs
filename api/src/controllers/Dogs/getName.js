@@ -20,7 +20,7 @@ const getName = async (name) => {
    const resultDb = await getDbData();
    const data = resultApi.concat(resultDb)
    console.log(data)
-   const dog = data.filter((e) => e.name == name)
+   const dog = data.filter((e) => e.name === name)
    //console.log(dogApi)
    if(dog.length) return dog;
    else {

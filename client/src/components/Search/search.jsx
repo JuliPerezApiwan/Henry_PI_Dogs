@@ -23,6 +23,7 @@ const SearchBar = () => {
   
     useEffect(() => {
       dispatch(getAllDogs());
+      dispatch(getAllTemperaments())
       
     }, [dispatch]);
 

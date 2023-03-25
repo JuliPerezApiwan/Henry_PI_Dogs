@@ -20,13 +20,10 @@ export const getAllTemperaments = () => {
         const response = await axios.get('http://localhost:3001/temperaments')
         const data = response.data
         const temp = data.filter((e) => e.name !== null)
-        const temp2 = new Set(temp);
-        const temp3 = [...temp2]
-        
 
         return dispacht({
             type: GET_ALL_TEMPERAMENTS,
-            payload: temp3
+            payload: temp
         })
     }
 }
@@ -49,9 +46,10 @@ export const filterbyTemperaments = (temperament) => {
 
   export const getDogsName = (name) => {
     return async (dispatch) => {
-      const response = await axios.get(`http://localhost:3001/dogs/name?name=${name}`);
+      try {
+        const response = await axios.get(`http://localhost:3001/dogs/name?name=${name}`);
       const data = response.data;
-      if(data.length === 0) return alert("No se encontró la raza")
+      if(data.length === 0) return Error 
       else {
   
       return await dispatch({
@@ -59,6 +57,11 @@ export const filterbyTemperaments = (temperament) => {
         payload: data,
       });
     }
+      } catch (error) {
+        return alert("No se encontró la raza")
+        
+      }
+      
     };
   };
 
@@ -74,14 +77,18 @@ export const filterbyTemperaments = (temperament) => {
     };
   };
 
-  export const addDog = (payload) => {
-    return async (dispatch) => {
-      const response = await axios.post('http://localhost:3001/dogs');
-      const data = response.data;
-  
+  export const addDog = (dog) => {
+   
+      return  (dispatch) => {
+      const response =  axios.post('http://localhost:3001/dogs', dog);
+      const data = response.data
+      
+      
       return dispatch({
         type: ADD_DOG,
-        payload: data
+        payload: dog
       });
     };
+    
+    
   };

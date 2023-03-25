@@ -6,7 +6,8 @@ const initialState = {
     dogs: [],
     orderDogs: [],
     allTemperaments: [],
-    dogDetail: []
+    dogDetail: [],
+    newDog:[]
 }
 
 const reducer = (state = initialState, action) => {
@@ -118,14 +119,13 @@ const reducer = (state = initialState, action) => {
                 dogDetail: action.payload,
                 };
         case ADD_DOG:
-                  
-                  const newDog = state.dogs.slice();
-                  newDog.push(action.payload);
-                  return {
-                    ...state,
-                    allDogs: newDog, //[...state.activities, action.payload]
-                  };
-                
+          const newDog = state.allDogs.slice();
+          newDog.push(action.payload);
+          return {
+            ...state,
+            allDogs: newDog, //[...state.activities, action.payload]
+          };
+          
         default:
         return { 
             ...state 

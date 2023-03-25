@@ -7,7 +7,8 @@ import {
   orderbyWeight, 
   filterbyTemperaments,
   getAllTemperaments,
-  filterfromDogs
+  filterfromDogs,
+  getDogsName
 } from '../../redux/actions'
 import DogCard from '../DogCard/dogCard';
 import Pagination from '../Pagination/pagination';

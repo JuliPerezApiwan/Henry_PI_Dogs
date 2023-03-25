@@ -8,15 +8,19 @@ const postDog = async (image, name, height, weight, life_span, temperamentID) =>
   const allDogsDb = await getDbData()
   const allDogs = allDogsApi.concat(allDogsDb)
 
+
+    
+    
+
 const id = allDogs.length 
-console.log(id)
+
  if (!image || !name || !height || !weight || !life_span || !temperamentID) throw new Error('Me falta informacion');
 
-  const validate = await Dog.findOne({
-    where: {
-      name : name
-    }
-  })
+  const validate =  allDogs.find((e) => e.name === name)
+
+
+
+
  
   if (validate) throw new Error ('La raza ya existe');
   if(!validate) {

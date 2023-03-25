@@ -7,9 +7,8 @@ const NavBar = () => {
   return (
     <div className={style.navBar}>
       <Link to="/form">
-        <button className={style.btn_nvb}>Activities Form</button>
+        <button className={style.btn_nvb}>Add Dog Form</button>
       </Link>
-      <Link to="/home" className={style.btn_detail}>BACK</Link>
       <SearchBar/>
     </div>
   );

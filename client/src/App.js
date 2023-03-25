@@ -11,7 +11,7 @@ function App() {
       <Route path='/landing' component={landing}/>
       <Route path='/home' component={Home}/>
       <Route path='/dogs/:id' component={DogDetail} />
-
+      <Route path='/form' component={Form} />
     </div>
   );
 }
