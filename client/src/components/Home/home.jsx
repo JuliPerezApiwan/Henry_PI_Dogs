@@ -104,7 +104,7 @@ useEffect(() => {
                 name={c.name}
                 image={c.image}
                 weight={c.weight}
-                temperament={c.temperament? c.temperament:'c.Temperaments.name'}
+                temperament={c.temperament?c.temperament:c.Temperaments.map((e) =>  e.name + ", ")}
                 />
                 )
             })

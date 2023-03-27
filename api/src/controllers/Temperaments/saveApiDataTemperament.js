@@ -4,12 +4,12 @@ const { MY_API_KEY } = process.env
 
 const getApiDataTemperaments = async () => {
     try {
-    let temperamets = []
+    let temperaments = []
 
-    let apiDataTemperamets = await axios(`https://api.thedogapi.com/v1/breeds?api_key=${MY_API_KEY}`);
-    temperamets.push(apiDataTemperamets);
+    let apiDataTemperaments = await axios(`https://api.thedogapi.com/v1/breeds?api_key=${MY_API_KEY}`);
+    temperaments.push(apiDataTemperaments);
 
-    temperamets = (await Promise.all(temperamets)).map((c) => c.data.map((res) => {
+    temperaments = (await Promise.all(temperaments)).map((c) => c.data.map((res) => {
         return {
             id: res.id,
             name: res.temperament
@@ -18,9 +18,10 @@ const getApiDataTemperaments = async () => {
 
     let allTemperaments = [];
     
-    temperamets.map((c) => {
+    temperaments.map((c) => {
         allTemperaments = allTemperaments.concat(c)
     });
+    //console.log(allTemperaments)
 
     return allTemperaments;
     } catch (error) {
@@ -32,12 +33,28 @@ const getApiDataTemperaments = async () => {
 const saveApiDataTemperaments = async () => {
     try {
         
-    const allTemperaments = await getApiDataTemperaments();
+    let allTemperaments = await getApiDataTemperaments();
+    let unicos = []
+    allTemperaments = allTemperaments.map((e) => e.name ? e.name.split(", ") : '') 
     //console.log(allTemperaments)
+    allTemperaments.filter((e) => {
+        
+    for(var i = 0; i < e.length; i++) {
+     
+    const elemento = e[i];
+    let id = unicos.length + 1
+    if (!unicos.includes(elemento)) {
+        unicos.push({
+            id:id,
+            name:elemento
+        }) 
+      }
+    }  
+    })
     
-    await Temperament.bulkCreate(allTemperaments);
-    
-    return allTemperaments
+    console.log(unicos)
+    await Temperament.bulkCreate(unicos);
+    return unicos
     } catch (error) {
     return { error: error.message };
     }

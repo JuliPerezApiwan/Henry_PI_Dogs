@@ -19,7 +19,7 @@ const Form = () => {
         min_weight: '',
         max_weight: '',
         life_span: '',
-        temperamentID: '',
+        temperamentID: [],
     });
 
     const [errors, setErrors] = useState({
@@ -30,7 +30,7 @@ const Form = () => {
         min_weight: '',
         max_weight: '',
         life_span: '',
-        temperamentID: '',
+        temperamentID: [],
     })
    //max height
  //min
@@ -56,7 +56,7 @@ const Form = () => {
       event.preventDefault();
      dispatch(addDog(form));
      
-     if (form.name.length > 0 && form.min_height.length > 0 && form.max_height.length > 0 && form.min_weight.length > 0 && form.max_weight.length > 0 && form.life_span.length > 0 && form.temperamentID) {
+     if (form.name.length > 0 && form.min_height.length > 0 && form.max_height.length > 0 && form.min_weight.length > 0 && form.max_weight.length > 0 && form.life_span.length > 0 && form.temperamentID > 0) {
    
      alert('Raza creada')
      setForm({

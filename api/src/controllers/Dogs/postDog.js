@@ -3,7 +3,7 @@ const { Dog } = require('../../db.js');
 const { getApiData, getDbData } = require('./saveApiData.js');
 
  // cantidad de razas en la db, ultimo id
-const postDog = async (image, name, min_height, max_height, min_weight, max_weight, life_span, temperamentID) => {
+const postDog = async (image, name, min_height, max_height, min_weight, max_weight, life_span, temperamentID = []) => {
   const allDogsApi = await getApiData();
   const allDogsDb = await getDbData()
   const allDogs = allDogsApi.concat(allDogsDb)
@@ -30,14 +30,18 @@ const id = allDogs.length +1
         life_span,
     })
    
-
-    const temp = await Temperament.findOne({
+for (let i = 0; i < temperamentID.length; i++) {
+  const element = temperamentID[i];
+   const temp = await Temperament.findOne({
         where: {
-            id : temperamentID
+            id : element
         }
     })
     
     await newRaza.addTemperament(temp)
+  
+}
+   
     
 return ("Raza creada correctamente");
   }

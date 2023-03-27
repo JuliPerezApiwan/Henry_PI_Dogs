@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'; // ME PERMITE TRAER LAS PROPIEDADE
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getDogDetail } from '../../redux/actions';
+import { getAllDogs, getDogDetail } from '../../redux/actions';
 //import { cleanCountryDetail } from '../../redux/actions';
 import style from '../DogDetail/dogDetail.module.css';
 
@@ -10,7 +10,7 @@ import style from '../DogDetail/dogDetail.module.css';
 const DogDetail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { name, image, height, weight, life_span, temperament, Temperaments} = useSelector((state) => state.dogDetail);
+  const [{ name, image, height, weight, life_span, temperament, Temperaments}] = useSelector((state) => state.dogDetail);
   
  
  
@@ -34,7 +34,7 @@ const DogDetail = () => {
             <h3>Height:</h3> <p>{height}</p>
             <h3>Weight:</h3> <p>{weight}</p>
             <h3>Life Span:</h3> <p>{life_span}</p>
-            <h3>Temperaments:</h3> <p>{temperament !== undefined?temperament: "(Temperaments.map((e) => e.name))"}</p>
+            <h3>Temperaments:</h3> <p>{temperament?temperament:Temperaments.map((e) =>  e.name + ", ")}</p>
           </div>
         </div>
       </div>

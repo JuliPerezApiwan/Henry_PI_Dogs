@@ -78,7 +78,6 @@ export const filterbyTemperaments = (temperament) => {
   };
 
   export const addDog = (payload) => {
-   
       return  async (dispatch) => {
       const response =  axios.post('http://localhost:3001/dog', payload);
       const data = response.data

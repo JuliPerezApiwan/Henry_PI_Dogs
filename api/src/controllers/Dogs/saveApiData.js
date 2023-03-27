@@ -52,20 +52,6 @@ const getDbData = async () => {
     return res
 }
 
-// const saveApiData = async () => {
-//     try {
-        
-//     const allDogs = await getApiData();
-    
-//     await Dog.bulkCreate(allDogs);
-//     //console.log(allDogs)
-//     return allDogs
-//     } catch (error) {
-//     return { error: error.message };
-//     }
-// }
-   
-
 
 
 module.exports = {
