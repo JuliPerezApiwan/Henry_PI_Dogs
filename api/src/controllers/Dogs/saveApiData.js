@@ -31,28 +31,7 @@ const getApiData = async () => {
     dogs.map((c) => {
         allDogs = allDogs.concat(c)
     });
-    
 
-    
-    // allDogs.map((e) => {
-    //     let heightArray = [];
-    //             if (e.height) {
-    //                 heightArray = e.height.split(" - ");
-    //             }
-    //             heightArray.forEach((c) => {heightArray = c})
-            
-    //     let weightArray = [];
-    //             if (e.weight) {
-    //                 weightArray = e.weight.split(" - ");
-    //                 weightArray.forEach((c) => {weightArray = c})
-    //             }
-                
-
-    //     console.log(Math.max(heightArray))
-    // })
-   
-
-//console.log(heightArray)
 
      //console.log(allDogs)
     return allDogs;

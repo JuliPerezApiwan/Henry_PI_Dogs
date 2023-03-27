@@ -58,10 +58,10 @@ router.get('/temperaments', async (req, res) => {
   });
 
   router.post('/dog', async (req, res) => {
-    const { image, name, height, weight, life_span, temperamentID } = req.body;
+    const { image, name, min_height, max_height, min_weight, max_weight, life_span, temperamentID } = req.body;
     try {
       
-      const result = await postDog(image, name, height, weight, life_span, temperamentID);
+      const result = await postDog(image, name, min_height, max_height, min_weight, max_height, life_span, temperamentID);
       return res.status(200).json(result);
     } catch (error) {
       console.log(error);

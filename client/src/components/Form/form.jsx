@@ -8,14 +8,16 @@ import validate from './validation';
 
 
 const Form = () => {
-    //const allDogs = useSelector((state) => state.allDogs);
+    const allDogs = useSelector((state) => state.allDogs);
     const allTemperaments = useSelector((state) => state.allTemperaments);
     const dispatch = useDispatch('');
     const [form, setForm] = useState({
         image: '',
         name:'',
-        height:'',
-        weight: '' ,
+        min_height: '',
+        max_height: '',
+        min_weight: '',
+        max_weight: '',
         life_span: '',
         temperamentID: '',
     });
@@ -23,8 +25,10 @@ const Form = () => {
     const [errors, setErrors] = useState({
         image: '',
         name:'',
-        height:'',
-        weight: '' ,
+        min_height: '',
+        max_height: '',
+        min_weight: '',
+        max_weight: '',
         life_span: '',
         temperamentID: '',
     })
@@ -47,22 +51,28 @@ const Form = () => {
          [event.target.name]: event.target.value
      }))
     };
-  
+    
     const handleSubmit = (event) => {
       event.preventDefault();
      dispatch(addDog(form));
+     
+     if (form.name.length > 0 && form.min_height.length > 0 && form.max_height.length > 0 && form.min_weight.length > 0 && form.max_weight.length > 0 && form.life_span.length > 0 && form.temperamentID) {
+   
      alert('Raza creada')
-     if (form.name.length > 0 && form.height.length > 0 && form.weight.length > 0 && form.life_span.length > 0) 
      setForm({
         image: '',
         name:'',
-        height:'',
-        weight: '' ,
+        min_height: '',
+        max_height: '',
+        min_weight: '',
+        max_weight: '',
         life_span: '',
         temperamentID: '',
-     })
+     })}
+     
+     
      else {
-        alert(errors.name || errors.height|| errors.weight || errors.life_span)
+        alert(errors.name || errors.height|| errors.weight || errors.life_span || errors.temperamentID)
      }
     };
   
@@ -105,23 +115,38 @@ const Form = () => {
   
             <label>
             Height
-              <input
+            <input
                 type="text"
-                name="height"
-                value={form.height}
+                name="min_height"
+                value={form.min_height}
                 onChange={handleChange}
-                placeholder='Min height - Max height'
+                placeholder='Min height '
               ></input>
+                  <input
+                type="text"
+                name="max_height"
+                value={form.max_height}
+                onChange={handleChange}
+                placeholder='Max height'
+              ></input>
+              
             </label>
   
             <label>
             Weight
             <input
                 type="text"
-                name="weight"
-                value={form.weight}
+                name="min_weight"
+                value={form.min_weight}
                 onChange={handleChange}
-                placeholder='Min weight - Max weight'
+                placeholder='Min weight'
+              ></input>
+               <input
+                type="text"
+                name="max_weight"
+                value={form.max_weight}
+                onChange={handleChange}
+                placeholder='Max weight'
               ></input>
             </label>
   

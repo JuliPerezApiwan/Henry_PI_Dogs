@@ -7,7 +7,7 @@ const getName = async (name) => {
      if(name.charAt(0) === name.charAt(0).toUpperCase()){ // si el primer caracter es mayus
       if(name.charAt(1) === name.charAt(1).toUpperCase()){ // si el segundo tambien es mayus
           name = name.toLowerCase() // lo paso todo a minus
-           name = (name.charAt(0)).toUpperCase() + name.slice(1) // y paso a mayus la primera letra
+           name = (name.charAt(0)).toUpperCase() + name.slice(1) // y paso a mayus la primera letra que es como aparecen
        }
      }   
   
@@ -19,8 +19,10 @@ const getName = async (name) => {
    const resultApi = await getApiData();
    const resultDb = await getDbData();
    const data = resultApi.concat(resultDb)
-   console.log(data)
-   const dog = data.filter((e) => e.name === name)
+   //console.log(data)
+   const dog = data.filter((e) =>
+   e.name.toLowerCase().includes(name.toLowerCase())
+ );
    //console.log(dogApi)
    if(dog.length) return dog;
    else {

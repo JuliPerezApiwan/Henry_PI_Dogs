@@ -8,7 +8,6 @@ import {
   filterbyTemperaments,
   getAllTemperaments,
   filterfromDogs,
-  getDogsName
 } from '../../redux/actions'
 import DogCard from '../DogCard/dogCard';
 import Pagination from '../Pagination/pagination';

@@ -10,7 +10,7 @@ const getIdDogs = async(id) => {
         
         if(result.length) {
         console.log(result)
-        return result[0]
+        return result
         } else {
             const allDogsDb = await getDbData()
             const result = allDogsDb.find((e) => e.id === id)
