@@ -1,5 +1,4 @@
 const { Dog } = require('../../db.js')
-const { Temperament } = require ('../../db.js');
 const { getApiData, getDbData } = require('./saveApiData.js');
 
 const getIdDogs = async(id) => {

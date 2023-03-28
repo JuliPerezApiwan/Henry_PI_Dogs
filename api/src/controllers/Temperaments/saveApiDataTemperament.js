@@ -16,14 +16,14 @@ const getApiDataTemperaments = async () => {
         }
     }))
 
-    let allTemperaments = [];
-    
-    temperaments.map((c) => {
-        allTemperaments = allTemperaments.concat(c)
-    });
+   
+    //console.log(allTemperaments)
+    // temperaments.map((c) => {
+    //     allTemperaments = allTemperaments.concat(c)
+    // });
     //console.log(allTemperaments)
 
-    return allTemperaments;
+    return temperaments;
     } catch (error) {
     return { error: error.message };
     }
@@ -34,27 +34,33 @@ const saveApiDataTemperaments = async () => {
     try {
         
     let allTemperaments = await getApiDataTemperaments();
+  
     let unicos = []
-    allTemperaments = allTemperaments.map((e) => e.name ? e.name.split(", ") : '') 
-    //console.log(allTemperaments)
-    allTemperaments.filter((e) => {
-        
-    for(var i = 0; i < e.length; i++) {
-     
-    const elemento = e[i];
-    let id = unicos.length + 1
-    if (!unicos.includes(elemento)) {
-        unicos.push({
-            id:id,
-            name:elemento
-        }) 
-      }
-    }  
+    let allTemperaments2 = allTemperaments[0].map((e) => e.name ? e.name.split(", ") : '') 
+    //console.log(allTemperaments2)
+   
+    const todos = allTemperaments2.map((e) => {
+        for (let i = 0; i < e.length; i++) {
+            const element = e[i];
+            if(!unicos.includes(element)){
+                unicos.push(element)
+            } 
+        }
     })
+  
+   let temp = []
+   let id = temp.length
+   unicos.map((e) => temp.push({id:id++, name:e}))
+
     
-    console.log(unicos)
-    await Temperament.bulkCreate(unicos);
-    return unicos
+   //console.log(temp)
+ 
+
+
+
+
+    await Temperament.bulkCreate(temp);
+    return temp
     } catch (error) {
     return { error: error.message };
     }

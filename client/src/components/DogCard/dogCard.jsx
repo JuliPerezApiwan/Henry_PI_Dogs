@@ -14,7 +14,7 @@ const DogCard = ({id, name, image, temperament, weight, Temperaments }) => {
             <h4>Weight</h4> 
             <p>{weight} metrical </p>
             <h4>Temperaments</h4> 
-            <p>{temperament?temperament:Temperaments.map((e) =>  e.name + ", ")}</p>
+            <p>{temperament?temperament:Temperaments?.map((e) =>  e.name)}</p>
             
         </div>
     )

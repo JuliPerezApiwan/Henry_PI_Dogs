@@ -8,7 +8,7 @@ import validate from './validation';
 
 
 const Form = () => {
-    const allDogs = useSelector((state) => state.allDogs);
+    //const allDogs = useSelector((state) => state.allDogs);
     const allTemperaments = useSelector((state) => state.allTemperaments);
     const dispatch = useDispatch('');
     const [form, setForm] = useState({
@@ -56,9 +56,7 @@ const Form = () => {
       event.preventDefault();
      dispatch(addDog(form));
      
-     if (form.name.length > 0 && form.min_height.length > 0 && form.max_height.length > 0 && form.min_weight.length > 0 && form.max_weight.length > 0 && form.life_span.length > 0 && form.temperamentID > 0) {
-   
-     alert('Raza creada')
+     if (form.name.length > 0 && form.min_height.length > 0 && form.max_height.length > 0 && form.min_weight.length > 0 && form.max_weight.length > 0 && form.life_span.length > 0 && form.temperamentID.length > 0) {
      setForm({
         image: '',
         name:'',
@@ -68,7 +66,9 @@ const Form = () => {
         max_weight: '',
         life_span: '',
         temperamentID: '',
-     })}
+     })
+     alert('Raza creada')
+    }
      
      
      else {
@@ -82,6 +82,8 @@ const Form = () => {
         temperamentID : [...form.temperamentID,e.target.value],
       });
     };
+
+    
   
     
     useEffect(() => {
@@ -168,14 +170,17 @@ const Form = () => {
               name="temperaments"
               onChange={handleSelectTemperaments}
               value={form.id}
+              key={form.id}
             >
               <option>Select</option>
               {allTemperaments?.map((e) => (
-                <option key={e.name} value={e.name}>
+                <option key={e.id} value={e.name}>
                   {e.name}
                 </option>
               ))}
             </select>
+           {form.temperamentID.map((e)=> <button  type='button' key={e.name} >{e}</button>)}
+
           </label>
             <div className={style.btn}>
               <button type="submit">Add Dog</button>

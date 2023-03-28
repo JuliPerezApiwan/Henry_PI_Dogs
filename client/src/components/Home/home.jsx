@@ -92,7 +92,7 @@ useEffect(() => {
 
 
         <div className={style.cards}> 
-        {allDogs.slice(
+        {allDogs?.slice(
             //console.log(allDogs)
               (currentPage - 1) * dogsPerPage,
               (currentPage - 1) * dogsPerPage + dogsPerPage
@@ -104,7 +104,7 @@ useEffect(() => {
                 name={c.name}
                 image={c.image}
                 weight={c.weight}
-                temperament={c.temperament?c.temperament:c.Temperaments.map((e) =>  e.name + ", ")}
+                temperament={c.temperament?c.temperament:c.Temperaments?.map((e) =>  e.name + ", ")}
                 />
                 )
             })

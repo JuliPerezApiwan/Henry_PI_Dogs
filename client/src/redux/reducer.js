@@ -92,12 +92,16 @@ const reducer = (state = initialState, action) => {
                 const temperamentFilter =
                   action.payload === 'All' || action.payload === 'Filter-by-Temperaments'
                     ? allTemperaments
-                    : allTemperaments.filter((i) => i.temperament === action.payload);
+                    : allTemperaments.filter((e) =>
+                    e.temperament &&
+                    e.temperament.split(", ").find((i) => i === action.payload))
                 return {
                   ...state,
                   allDogs: temperamentFilter,
-                  
                 };
+
+            
+
         case FILTER_FROM_DOGS:
                 const filter = action.payload === 'All' 
                 ? state.dogs
@@ -116,14 +120,15 @@ const reducer = (state = initialState, action) => {
         case GET_DOG_DETAIL:
               return {
                 ...state,
-                dogDetail: action.payload,
+                dogDetail: action.payload[0],
                 };
         case ADD_DOG:
           const newDog = state.allDogs.slice();
           newDog.push(action.payload);
           return {
             ...state,
-            allDogs: newDog, //[...state.activities, action.payload]
+            allDogs: newDog,
+           //[...state.activities, action.payload]
           };
           
         default:
