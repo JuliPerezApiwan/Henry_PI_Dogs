@@ -67,7 +67,7 @@ export const filterbyTemperaments = (temperament) => {
 
   export const getDogDetail = (id) => {
     return async (dispatch) => {
-      const response = await axios.get(`http://localhost:3001/dogs/${[id]}`);
+      const response = await axios.get(`http://localhost:3001/dogs/${id}`);
       const data = response.data;
   
       return dispatch({
