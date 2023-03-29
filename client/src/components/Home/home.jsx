@@ -85,18 +85,22 @@ useEffect(() => {
       </select>
        
       <select onChange={handlerFilterfromDogs} className={style.filters}>
-        <option value="All">Filter From Dog</option>
+        <option value="Filter_From_Dog">Filter From Dog</option>
+        <option value="All">All</option>
         <option value="db">Formulario</option>
         <option value="api">Api</option>
         </select>
 
 
         <div className={style.cards}> 
-        {allDogs?.slice(
+        {Array.isArray(allDogs) ? allDogs.slice(
             //console.log(allDogs)
               (currentPage - 1) * dogsPerPage,
               (currentPage - 1) * dogsPerPage + dogsPerPage
-            ).map((c) => {
+            ) 
+            
+            
+            .map((c) => {
                 return (
                 <DogCard
                 key={c.id}
@@ -107,7 +111,7 @@ useEffect(() => {
                 temperament={c.temperament?c.temperament:c.Temperaments?.map((e) =>  e.name + ", ")}
                 />
                 )
-            })
+            }): alert('No se encontro la raza') 
         }
         </div>
       

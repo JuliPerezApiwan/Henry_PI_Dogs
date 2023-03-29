@@ -103,8 +103,8 @@ const reducer = (state = initialState, action) => {
             
 
         case FILTER_FROM_DOGS:
-                const filter = action.payload === 'All' 
-                ? state.dogs
+                const filter = action.payload === 'All' || action.payload === "Filter_From_Dog"
+                ? state.allDogs
                 : (action.payload === 'db') ? 
             state.dogs.filter((i) => (i.createdAt)) 
             : state.dogs.filter((i) => (!(i.createdAt)))
@@ -113,6 +113,7 @@ const reducer = (state = initialState, action) => {
                     allDogs: filter, 
                     };
         case GET_DOGS_NAME:
+          
             return {
                 ...state,
                 allDogs: action.payload,

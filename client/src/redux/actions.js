@@ -46,21 +46,16 @@ export const filterbyTemperaments = (temperament) => {
 
   export const getDogsName = (name) => {
     return async (dispatch) => {
-      try {
+     
         const response = await axios.get(`http://localhost:3001/dogs/name?name=${name}`);
       const data = response.data;
-      if(data.length === 0) return Error 
-      else {
-  
+      
       return await dispatch({
         type: GET_DOGS_NAME,
         payload: data,
       });
-    }
-      } catch (error) {
-        return alert("No se encontró la raza")
-        
-      }
+    
+     
       
     };
   };

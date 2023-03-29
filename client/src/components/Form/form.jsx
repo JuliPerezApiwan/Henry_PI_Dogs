@@ -174,12 +174,12 @@ const Form = () => {
             >
               <option>Select</option>
               {allTemperaments?.map((e) => (
-                <option key={e.id} value={e.name}>
+                <option key={e.name} value={e.name}>
                   {e.name}
                 </option>
               ))}
             </select>
-           {form.temperamentID.map((e)=> <button  type='button' key={e.name} >{e}</button>)}
+           { Array.isArray(form.temperamentID) ? form.temperamentID.map((e)=> <button  type='button' key={e.name} value={e.name}>{e}</button>) : null}
 
           </label>
             <div className={style.btn}>
