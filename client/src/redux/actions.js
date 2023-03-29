@@ -1,4 +1,4 @@
-import { GET_ALL_DOGS, ORDER, ORDER_BYWEIGHT, FILTER_BYTEMPERAMENTS, GET_ALL_TEMPERAMENTS, FILTER_FROM_DOGS, GET_DOGS_NAME, GET_DOG_DETAIL, ADD_DOG } from './actions-types'
+import { GET_ALL_DOGS, ORDER, ORDER_BYWEIGHT, FILTER_BYTEMPERAMENTS, GET_ALL_TEMPERAMENTS, FILTER_FROM_DOGS, GET_DOGS_NAME, GET_DOG_DETAIL, ADD_DOG, CLEAN_DETAIL } from './actions-types'
 import axios from 'axios'
 
 export const getAllDogs = () => {
@@ -58,10 +58,6 @@ export const filterbyTemperaments = (temperament) => {
         alert("La raza ingresada no existe en la base de datos")
         return getAllDogs()
       }
-      
-    
-     
-      
     };
   };
 
@@ -88,6 +84,10 @@ export const filterbyTemperaments = (temperament) => {
         payload:data
       });
     };
-    
-    
   };
+
+  export const cleanDetail = () => {
+    return {
+      type: CLEAN_DETAIL
+    }
+  }

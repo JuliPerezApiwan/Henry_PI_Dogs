@@ -8,8 +8,8 @@ const postDog = async (image, name, min_height, max_height, min_weight, max_weig
   const allDogsDb = await getDbData()
   const allDogs = allDogsApi.concat(allDogsDb)
 
-const id = allDogs.length +1
 
+  const id = 300 + 1
  if (!name || !min_height || !max_height|| !min_weight || !max_weight || !life_span || !temperamentID) throw new Error('Me falta informacion');
 
   const validate =  allDogs.filter((e) => e.name === name)

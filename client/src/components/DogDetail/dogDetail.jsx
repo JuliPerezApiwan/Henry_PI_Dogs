@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'; // ME PERMITE TRAER LAS PROPIEDADE
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getDogDetail } from '../../redux/actions';
+import { getDogDetail, cleanDetail } from '../../redux/actions';
 //import { cleanCountryDetail } from '../../redux/actions';
 import style from '../DogDetail/dogDetail.module.css';
 
@@ -17,7 +17,7 @@ const DogDetail = () => {
 
   useEffect(() => {
     dispatch(getDogDetail(id));
-    //return () => dispatch(cleanCountryDetail()) // que cuando se demonte me limpie countryDetail
+    return () => dispatch(cleanDetail()) 
   }, [dispatch, id]);
 
 

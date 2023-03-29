@@ -1,5 +1,5 @@
 
-import { GET_ALL_DOGS, ORDER, ORDER_BYWEIGHT, FILTER_BYTEMPERAMENTS, GET_ALL_TEMPERAMENTS, FILTER_FROM_DOGS, GET_DOGS_NAME, GET_DOG_DETAIL, ADD_DOG} from './actions-types'
+import { GET_ALL_DOGS, ORDER, ORDER_BYWEIGHT, FILTER_BYTEMPERAMENTS, GET_ALL_TEMPERAMENTS, FILTER_FROM_DOGS, GET_DOGS_NAME, GET_DOG_DETAIL, ADD_DOG, CLEAN_DETAIL} from './actions-types'
 
 const initialState = {
     allDogs: [],
@@ -23,8 +23,6 @@ const reducer = (state = initialState, action) => {
             ...state,
             allTemperaments: action.payload
         }
-
-        
          case ORDER: 
             const orderDogs = 
             action.payload === 'All' || action.payload === 'A-Z' ? state.allDogs.sort(function (a,b) {
@@ -128,8 +126,13 @@ const reducer = (state = initialState, action) => {
           return {
             ...state,
             allDogs: newDog,
-           //[...state.activities, action.payload]
           };
+        
+        case CLEAN_DETAIL:
+          return{
+            ...state,
+            dogDetail: {}
+          }
           
         default:
         return { 

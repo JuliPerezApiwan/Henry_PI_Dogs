@@ -7,3 +7,4 @@ export const FILTER_FROM_DOGS = 'FILTER_FROM_DOGS';
 export const ADD_DOG = 'ADD_DOG';
 export const GET_DOGS_NAME = 'GET_DOGS_NAME';
 export const GET_ALL_TEMPERAMENTS = 'GET_ALL_TEMPERAMENTS';
+export const CLEAN_DETAIL = 'CLEAN_DETAIL'
