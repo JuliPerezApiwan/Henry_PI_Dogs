@@ -99,7 +99,7 @@ const Form = () => {
             <button>Home</button>
           </Link>
           <div className={style.container}>
-            <h2>Add Dogs Form</h2>
+            <h2>ADD DOGS FORM</h2>
             <label>Image <input type="text" autoComplete="off" value={form.image} name="image" placeholder="Image URL..." onChange={handleChange}/>
             </label>
            
@@ -172,15 +172,16 @@ const Form = () => {
               value={form.id}
               key={form.id}
             >
-              <option>Select</option>
+              
               {allTemperaments?.map((e) => (
                 <option key={e.name} value={e.name}>
                   {e.name}
                 </option>
               ))}
             </select>
+            <div className={style.btn_select}>
            { Array.isArray(form.temperamentID) ? form.temperamentID.map((e)=> <button  type='button' key={e.name} value={e.name}>{e}</button>) : null}
-
+            </div>
           </label>
             <div className={style.btn}>
               <button type="submit">Add Dog</button>

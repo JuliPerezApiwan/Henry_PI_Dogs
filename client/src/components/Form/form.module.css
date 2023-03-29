@@ -1,6 +1,6 @@
 .div {
     background-image: url("https://media.istockphoto.com/id/1006940504/es/vector/garabato-perros-colores-de-fondo.jpg?s=170667a&w=0&k=20&c=HiUwnhc_FuaDU2BbShtPWxwJ2jx3BGG3wQwCkLgipu8=");
-    height: 130vh;
+    height: 110vh;
 	background-color: black;
     background-size:20%;
 	background-position: center;  
@@ -10,7 +10,7 @@
 }
 
 form {
-	padding:5px;
+	
 	border-radius:10px;
     display: inline-block;
     box-shadow: 0 0 0.2rem rgb(12 12 12), 0 0 0.2rem rgb(16 15 15 / 86%), 0 0 2rem rgb(5 10 6);
@@ -38,28 +38,28 @@ form {
 }
 
 .container label {
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
     margin-left: -10px;
+    font-size: 15px;
    
     
 }
 
-.btn {
-    margin-left: 200px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+.btn button{
+    margin-top: 18px;
+    margin-bottom: 15px;
     background-color: black;
     border-radius: 10px;
     color: white;
-    padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-    font-size: 12px;
+    font-size: 15px;
     cursor:pointer;
     width: 100px;
+    height: 30px;
 }
-.btn:hover {
+.btn button:hover {
     background-color: white;
     color: black;
     border: 2px black solid;
@@ -77,14 +77,13 @@ form {
 .container h2{
     color: black;
     font-family:monospace;
-    font-size: 30px;
+    font-size: 40px;
 }
 
 .btn_home button {
     margin-top: 10px;
     background-color: black;
     border-radius: 10px;
-    border: none;
     color: white;
     padding: 10px 10px;
     text-align: center;
@@ -100,3 +99,15 @@ form {
     border: 2px black solid;
   }
   
+  .btn_select button {
+    margin-top: 10px;
+    margin-right: 5px;
+    background-color: white;
+    border-radius: 7px;
+    border: 1px black;
+    color: black;
+    padding: 8px 10px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
