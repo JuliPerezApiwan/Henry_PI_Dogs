@@ -26,7 +26,8 @@ const getName = async (name) => {
    //console.log(dogApi)
    if(dog.length) return dog;
    else {
-    return ('No tengo la raza que ingresaste')
+    alert('')
+    return data
     
    }
 };

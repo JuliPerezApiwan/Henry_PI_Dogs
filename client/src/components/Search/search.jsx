@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { getAllDogs, getDogsName, getAllTemperaments } from '../../redux/actions';
 import style from '../Search/search.module.css';
 import { Link } from 'react-router-dom';
-import Home from '../Home/home';
 
 const SearchBar = () => {
     const dispatch = useDispatch();
@@ -17,8 +16,12 @@ const SearchBar = () => {
   
     function handleSubmit(e) {
       e.preventDefault();
-      dispatch(getDogsName(name));
-      setName(e.target.value);
+      if(name !== ""){
+     dispatch(getDogsName(name));;
+      setName("");}
+      else{
+      alert("Ingresa un nombre para buscar")
+      }
     }
   
     useEffect(() => {

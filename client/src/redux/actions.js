@@ -46,7 +46,7 @@ export const filterbyTemperaments = (temperament) => {
 
   export const getDogsName = (name) => {
     return async (dispatch) => {
-     
+      try {
         const response = await axios.get(`http://localhost:3001/dogs/name?name=${name}`);
       const data = response.data;
       
@@ -54,6 +54,11 @@ export const filterbyTemperaments = (temperament) => {
         type: GET_DOGS_NAME,
         payload: data,
       });
+      } catch (error) {
+        alert("La raza ingresada no existe en la base de datos")
+        return getAllDogs()
+      }
+      
     
      
       

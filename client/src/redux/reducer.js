@@ -113,7 +113,6 @@ const reducer = (state = initialState, action) => {
                     allDogs: filter, 
                     };
         case GET_DOGS_NAME:
-          
             return {
                 ...state,
                 allDogs: action.payload,

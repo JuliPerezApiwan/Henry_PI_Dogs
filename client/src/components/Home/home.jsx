@@ -48,6 +48,11 @@ const handlerFilterbyTemperament = (event) => {
     dispatch(filterfromDogs(event.target.value));
     setOrder(event.target.value);
   };
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+   dispatch(getAllDogs());
+  }
 
 useEffect(() => {
     dispatch(getAllDogs());
@@ -93,14 +98,14 @@ useEffect(() => {
 
 
         <div className={style.cards}> 
-        {Array.isArray(allDogs) ? allDogs.slice(
+        {Array.isArray(allDogs) ? 
+        
+        
+        allDogs.slice(
             //console.log(allDogs)
               (currentPage - 1) * dogsPerPage,
               (currentPage - 1) * dogsPerPage + dogsPerPage
-            ) 
-            
-            
-            .map((c) => {
+            ) .map((c) => {
                 return (
                 <DogCard
                 key={c.id}
@@ -111,7 +116,8 @@ useEffect(() => {
                 temperament={c.temperament?c.temperament:c.Temperaments?.map((e) =>  e.name + ", ")}
                 />
                 )
-            }): alert('No se encontro la raza') 
+            }) : null
+            
         }
         </div>
       
