@@ -1,4 +1,4 @@
-import { GET_ALL_DOGS, ORDER, ORDER_BYWEIGHT, FILTER_BYTEMPERAMENTS, GET_ALL_TEMPERAMENTS, FILTER_FROM_DOGS, GET_DOGS_NAME, GET_DOG_DETAIL, ADD_DOG, CLEAN_DETAIL } from './actions-types'
+import { GET_ALL_DOGS, ORDER, ORDER_BYWEIGHT, FILTER_BYTEMPERAMENTS, GET_ALL_TEMPERAMENTS, FILTER_FROM_DOGS, GET_DOGS_NAME, GET_DOG_DETAIL, ADD_DOG, CLEAN_DETAIL, CLEAN_FILTER } from './actions-types'
 import axios from 'axios'
 
 export const getAllDogs = () => {
@@ -89,5 +89,11 @@ export const filterbyTemperaments = (temperament) => {
   export const cleanDetail = () => {
     return {
       type: CLEAN_DETAIL
+    }
+  }
+
+  export const cleanFilter = () => {
+    return {
+      type: CLEAN_FILTER
     }
   }

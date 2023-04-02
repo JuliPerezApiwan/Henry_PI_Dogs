@@ -35,3 +35,14 @@
 .filters option:hover{
     cursor: pointer;
 }
+
+.btn_clean {
+    height: 30px;
+    margin: 10px 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+    box-shadow: -1px 3px 3px 2px rgba(0,0,0,0.4);
+}

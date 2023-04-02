@@ -8,6 +8,7 @@ import {
   filterbyTemperaments,
   getAllTemperaments,
   filterfromDogs,
+  cleanFilter
 } from '../../redux/actions'
 import DogCard from '../DogCard/dogCard';
 import Pagination from '../Pagination/pagination';
@@ -48,11 +49,12 @@ const handlerFilterbyTemperament = (event) => {
     dispatch(filterfromDogs(event.target.value));
     setOrder(event.target.value);
   };
-  
-  const handleSubmit = (event) => {
+
+  const handlerCleanFilter = (event) => {
     event.preventDefault();
-   dispatch(getAllDogs());
-  }
+    dispatch(cleanFilter(event.target.value));
+    setOrder(event.target.value);
+  };
 
 useEffect(() => {
     dispatch(getAllDogs());
@@ -64,6 +66,10 @@ useEffect(() => {
     <div className={style.home}>
         <NavBar/>
         <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} max={max} />
+        <button type="submit" onClick={handlerCleanFilter} className={style.btn_clean}>
+        Clean filters
+        </button>
+        
 
         <select onChange={handlerOrder} className={style.filters}>
         <option value="All">Order By Name</option>

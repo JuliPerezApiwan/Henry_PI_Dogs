@@ -1,5 +1,5 @@
 
-import { GET_ALL_DOGS, ORDER, ORDER_BYWEIGHT, FILTER_BYTEMPERAMENTS, GET_ALL_TEMPERAMENTS, FILTER_FROM_DOGS, GET_DOGS_NAME, GET_DOG_DETAIL, ADD_DOG, CLEAN_DETAIL} from './actions-types'
+import { GET_ALL_DOGS, ORDER, ORDER_BYWEIGHT, FILTER_BYTEMPERAMENTS, GET_ALL_TEMPERAMENTS, FILTER_FROM_DOGS, GET_DOGS_NAME, GET_DOG_DETAIL, ADD_DOG, CLEAN_DETAIL, CLEAN_FILTER} from './actions-types'
 
 const initialState = {
     allDogs: [],
@@ -133,6 +133,11 @@ const reducer = (state = initialState, action) => {
             ...state,
             dogDetail: {}
           }
+          case CLEAN_FILTER:
+            return{
+              ...state,
+              allDogs: state.dogs
+            }
           
         default:
         return { 
