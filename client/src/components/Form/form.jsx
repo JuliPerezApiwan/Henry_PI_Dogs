@@ -65,7 +65,8 @@ const Form = () => {
         min_weight: '',
         max_weight: '',
         life_span: '',
-        temperamentID: '',
+        temperamentID: [],
+        
      })
      alert('Raza creada')
     }

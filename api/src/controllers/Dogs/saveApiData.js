@@ -45,9 +45,8 @@ const getDbData = async () => {
     const res = Dog.findAll({
         include: {
             model: Temperament,
-            attributes: ['name'], //atributos que quiero traer del modelo Temperament, el id lo trae automatico
+            attributes: ['name'], 
         }
-        
     })
     return res
 }
