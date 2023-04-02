@@ -101,8 +101,8 @@ const reducer = (state = initialState, action) => {
             
 
         case FILTER_FROM_DOGS:
-                const filter = action.payload === 'All' || action.payload === "Filter_From_Dog"
-                ? state.allDogs
+                const filter = action.payload === "Filter_From_Dog"
+                ? state.dogs
                 : (action.payload === 'db') ? 
                 state.dogs.filter((i) => (i.createdAt)) 
                 : state.dogs.filter((i) => (!(i.createdAt)))

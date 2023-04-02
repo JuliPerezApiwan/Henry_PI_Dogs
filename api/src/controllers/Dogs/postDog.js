@@ -7,7 +7,7 @@ const postDog = async ( image, name, min_height, max_height, min_weight, max_wei
   const allDogsApi = await getApiData();
   const allDogsDb = await getDbData()
   const allDogs = allDogsApi.concat(allDogsDb)
-  console.log(allDogs)
+  //console.log(allDogs)
 
 
   //const id = 300 + 1 + 2
@@ -15,7 +15,7 @@ const postDog = async ( image, name, min_height, max_height, min_weight, max_wei
  
 
   const validate =  allDogs.filter((e) => e.name === (name.charAt(0)).toUpperCase() + name.slice(1)) 
-  console.log(validate)
+  //console.log(validate)
   if (validate.length) throw new Error ('La raza ya existe');
   
 
@@ -28,8 +28,8 @@ const postDog = async ( image, name, min_height, max_height, min_weight, max_wei
         weight: min_weight.concat(' - ' + max_weight),
         life_span: life_span + ' years',
     })
-   temperamentID = temperamentID.split(', ')
-   //console.log(temperamentID)
+   
+   console.log(temperamentID)
 for (let i = 0; i < temperamentID.length; i++) {
   const element = temperamentID[i];
   //console.log(element)

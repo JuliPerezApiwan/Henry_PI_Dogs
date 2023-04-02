@@ -91,7 +91,6 @@ useEffect(() => {
        
       <select onChange={handlerFilterfromDogs} className={style.filters}>
         <option value="Filter_From_Dog">Filter From Dog</option>
-        <option value="All">All</option>
         <option value="db">Formulario</option>
         <option value="api">Api</option>
         </select>
