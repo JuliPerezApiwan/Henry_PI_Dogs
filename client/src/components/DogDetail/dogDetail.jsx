@@ -5,12 +5,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getDogDetail, cleanDetail } from '../../redux/actions';
 //import { cleanCountryDetail } from '../../redux/actions';
 import style from '../DogDetail/dogDetail.module.css';
+import Loading from '../Loading/loading';
+
 
 
 const DogDetail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  //const dog = useSelector((state) => state.dogDetail)
   const { name, image, height, weight, life_span, temperament, Temperaments } = useSelector((state) => state.dogDetail);
+  
   
  
  
@@ -21,7 +25,17 @@ const DogDetail = () => {
   }, [dispatch, id]);
 
 
-        return (
+
+  if (!name) return (
+    <div className={style.loading}>
+       
+        <div className={style.loaderContainer}>
+            <Loading></Loading>
+        </div>
+     
+    </div>
+    )
+    else return (
            
         <div className={style.dogDetail}>
              <Link to="/home" className={style.btn_detail}>BACK</Link>

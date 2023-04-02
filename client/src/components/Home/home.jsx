@@ -13,6 +13,7 @@ import {
 import DogCard from '../DogCard/dogCard';
 import Pagination from '../Pagination/pagination';
 import NavBar from '../NavBar/navBar'
+import Loading from '../Loading/loading'
 
 export const Home = () => {
 const dispatch = useDispatch();
@@ -62,7 +63,16 @@ useEffect(() => {
 }, [dispatch])
 
 
-   return (
+if (!allDogs.length) return (
+  <div className={style.loading}>
+     
+      <div className={style.loaderContainer}>
+          <Loading></Loading>
+      </div>
+   
+  </div>
+  )
+  else return (
     <div className={style.home}>
         <NavBar/>
         <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} max={max} />
