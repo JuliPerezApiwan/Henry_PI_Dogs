@@ -135,12 +135,6 @@ if (!allDogs.length) return (
             
         }
         </div>
-      
-   
-        
-       
-
-    
     </div>
    )
 }

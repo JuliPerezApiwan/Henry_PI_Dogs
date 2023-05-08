@@ -2,13 +2,13 @@ import { GET_ALL_DOGS, ORDER, ORDER_BYWEIGHT, FILTER_BYTEMPERAMENTS, GET_ALL_TEM
 import axios from 'axios'
 
 export const getAllDogs = () => {
-    return async (dispacht) => {
+    return async (dispatch) => {
         // const resApi = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${MY_API_KEY}`)
         // const dataApi = resApi.data        
         const response = await axios.get('http://localhost:3001/dogs')
         const data = response.data
 
-        return dispacht({
+        return dispatch({
             type: GET_ALL_DOGS,
             payload: data
         })
@@ -16,12 +16,12 @@ export const getAllDogs = () => {
 }
 
 export const getAllTemperaments = () => {
-    return async (dispacht) => {      
+    return async (dispatch) => {      
         const response = await axios.get('http://localhost:3001/temperaments')
         const data = response.data
         const temp = data.filter((e) => e.name !== null)
 
-        return dispacht({
+        return dispatch({
             type: GET_ALL_TEMPERAMENTS,
             payload: temp
         })
